@@ -3,20 +3,26 @@ import { Router } from "preact-router";
 
 import Header from "./header";
 
-// Code-splitting is automated for `routes` directory
 import Home from "../routes/home";
 import ProductDetail from "../routes/productDetail";
+import ReactQueryProvider from "./queryProvider";
+import AppBreadCrumbs from "./breadCrumb";
 
-const App = () => (
-  <div id="app">
-    <Header />
-    <main>
-      <Router>
-        <Home path="/" />
-        <ProductDetail path="/productDetail" />
-      </Router>
-    </main>
-  </div>
-);
+const App = () => {
+  return (
+    <ReactQueryProvider>
+      <div id="app">
+        <Header />
+        <main>
+          <AppBreadCrumbs />
+          <Router>
+            <Home path="/" />
+            <ProductDetail path="/productDetail/:id" />
+          </Router>
+        </main>
+      </div>
+    </ReactQueryProvider>
+  );
+};
 
 export default App;
