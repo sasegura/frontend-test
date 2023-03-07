@@ -1,37 +1,43 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { CardActionArea, CardMedia } from "@mui/material";
+import "./index.css";
 
 const ProductCard = ({ product }) => {
   const { title, image, price, category } = product;
 
   return (
-    <Card variant="outlined" sx={{ minWidth: "100%", minHeight: "320px" }}>
-      <CardContent sx={{ height: "100%" }}>
-        <Typography sx={{ fontSize: 14 }}>{title}</Typography>
-        <Typography
-          sx={{ fontSize: 14 }}
-          color="text.secondary"
-          component="div"
-        >
-          Category: {category}
-        </Typography>
-        <Typography variant="body2">Price: ${price}</Typography>
-        <Grid container spacing={2} mt={2}>
-          <Grid
-            item
-            xs={12}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+    <Card>
+      <CardActionArea>
+        <CardMedia
+          className="product-image"
+          component="img"
+          height="300"
+          image={image}
+          alt={title}
+          sx={{ margin: "16px auto", width: "auto" }}
+        />
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{ height: 35, overflow: "hidden" }}
           >
-            <img src={image} width={"100px"} height={"100px"} alt={title} />
-          </Grid>
-        </Grid>
-      </CardContent>
+            {title}
+          </Typography>
+          <Typography
+            sx={{ fontSize: 14 }}
+            color="text.secondary"
+            component="div"
+            variant="body2"
+          >
+            {category}
+          </Typography>
+          <Typography variant="h6">${price}</Typography>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };

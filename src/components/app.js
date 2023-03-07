@@ -5,7 +5,6 @@ import Header from "./header";
 
 import ReactQueryProvider from "./queryProvider";
 import AppBreadCrumbs from "./breadCrumb";
-import { store } from "../redux/store";
 import AppRouter from "./router";
 
 const App = () => {

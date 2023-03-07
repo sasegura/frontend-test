@@ -12,6 +12,7 @@ import { incrementCartElements } from "../../redux/cartSlice";
 import IsError from "../../components/isError";
 import { getProdutById } from "../../queryFunctions/getProduct";
 import { postProduct } from "../../queryFunctions/postProductById";
+import { Paper } from "@mui/material";
 
 const ProductDetail = ({ id }) => {
   const dispatch = useDispatch();
@@ -25,10 +26,13 @@ const ProductDetail = ({ id }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
+    getValues,
+    setValue,
   } = useForm({
     defaultValues: {
-      color: null,
-      storage: null,
+      color: "1",
+      storage: "1",
     },
   });
 
@@ -85,15 +89,20 @@ const ProductDetail = ({ id }) => {
 
   return (
     <Box sx={{ marginTop: 2 }}>
-      <Box sx={{ display: "flex", alignItems: "left" }}>
+      <Box sx={{ display: "flex", alignItems: "left", margin: "25px 0" }}>
         <h1>Details View</h1>
       </Box>
-      <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      <Paper
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: 600,
+          textAlign: "center",
+          overflow: "hidden",
+        }}
       >
-        <IsLoadding
-          loadding={statusGetProdutById === "loading" || isLoaddingPostProduct}
-        >
+        <IsLoadding loadding={statusGetProdutById === "loading"}>
           <IsError
             isError={isErrorGetProdutById}
             message={errorGetProdutById?.message}
@@ -101,16 +110,20 @@ const ProductDetail = ({ id }) => {
             {product ? (
               <ProductDetailCard
                 product={product}
+                isLoaddingPostProduct={isLoaddingPostProduct}
                 backToList={backToList}
                 onSubmit={handleSubmit(onSubmit)}
                 register={register}
                 control={control}
                 errors={errors}
+                getValues={getValues}
+                watch={watch}
+                setValue={setValue}
               />
             ) : null}
           </IsError>
         </IsLoadding>
-      </Box>
+      </Paper>
     </Box>
   );
 };

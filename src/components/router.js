@@ -5,6 +5,7 @@ import { Router } from "preact-router";
 import Home from "../routes/home";
 import ProductDetail from "../routes/productDetail";
 import { modifyUrl } from "../redux/cartSlice";
+import { productDetail } from "../const/paths";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const AppRouter = () => {
   return (
     <Router onChange={handleRoute}>
       <Home path="/" />
-      <ProductDetail path="/productDetail/:id" />
+      <ProductDetail path={`/${productDetail}/:id/:title`} />
     </Router>
   );
 };

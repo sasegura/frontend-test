@@ -31,7 +31,7 @@ const Home = () => {
   }, [status, data]);
 
   return (
-    <Box sx={{ marginTop: 2, backgroundColor: "gainsboro" }}>
+    <Box sx={{ marginTop: 2 }}>
       <Box
         sx={{
           float: "right",
@@ -39,7 +39,8 @@ const Home = () => {
       >
         <SearchBar value={inputValue} onChange={handleSearch} />
       </Box>
-      <Box sx={{ display: "flex", alignItems: "left" }}>
+
+      <Box sx={{ display: "flex", alignItems: "left", margin: "25px 0" }}>
         <h1>List View</h1>
       </Box>
       <Box
@@ -47,10 +48,15 @@ const Home = () => {
       >
         <IsLoadding loadding={status === "loading"}>
           <IsError isError={isError} message={error?.message}>
-            <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid
+              container
+              spacing={2}
+              sx={{ marginBottom: 1 }}
+              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            >
               {productList.map((product) => (
                 <Grid key={product.id} item xs={12} sm={6} md={3}>
-                  <a href={`/productDetail/${product.id}`}>
+                  <a href={`/productDetail/${product.id}/${product.title}`}>
                     <ProductCard product={product}></ProductCard>
                   </a>
                 </Grid>
