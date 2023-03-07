@@ -4,12 +4,7 @@ import Box from "@mui/material/Box";
 import style from "./style.css";
 import { Typography } from "@mui/material";
 
-const Header = () => {
-  const getTotalQuantity = () => {
-    let total = 0;
-    return total;
-  };
-
+const Header = ({ getTotalQuantity }) => {
   return (
     <header class={style.header}>
       <a href="/" class={style.logo}>
@@ -21,19 +16,19 @@ const Header = () => {
         />
         <h1>Frontend-Test</h1>
       </a>
-
-      <Box
-        className="shopping-cart"
-        sx={{
-          padding: "25px",
-          borderRadius: "100px",
-          position: "fixed",
-          right: "10px",
-        }}
-        onClick={() => navigate("/cart")}
-      >
-        <ShoppingCart sx={{ color: "white" }} id="cartIcon" />
+      <Box className="shopping-cart" sx={{}}>
+        <ShoppingCart
+          sx={{
+            padding: "25px",
+            borderRadius: "100px",
+            position: "fixed",
+            right: "10px",
+            color: "white",
+          }}
+          id="cartIcon"
+        />
         <Typography
+          data-selector="cartCount"
           sx={{
             position: "absolute",
             top: 0,

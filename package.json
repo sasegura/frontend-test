@@ -34,10 +34,15 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.11",
+    "@reduxjs/toolkit": "^1.9.3",
     "preact": "^10.11.3",
     "preact-render-to-string": "^5.2.6",
     "preact-router": "^3.2.1",
-    "react-query": "^3.39.3"
+    "react-hook-form": "^7.43.5",
+    "react-query": "^3.39.3",
+    "react-redux": "^8.0.5",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.8"
   },
   "jest": {
     "preset": "jest-preset-preact",

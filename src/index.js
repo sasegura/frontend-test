@@ -1,4 +1,11 @@
-import './style';
-import App from './components/app';
+import "./style";
+import App from "./components/app";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
-export default App;
+const AppWithRedux = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+export default AppWithRedux;

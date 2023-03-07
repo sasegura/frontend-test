@@ -1,26 +1,28 @@
 import { h } from "preact";
-import { Router } from "preact-router";
+import { Provider, useSelector } from "react-redux";
 
 import Header from "./header";
 
-import Home from "../routes/home";
-import ProductDetail from "../routes/productDetail";
 import ReactQueryProvider from "./queryProvider";
 import AppBreadCrumbs from "./breadCrumb";
+import { store } from "../redux/store";
+import AppRouter from "./router";
 
 const App = () => {
+  const quantity = useSelector((state) => state.quantity);
+
+  const getTotalQuantity = () => {
+    let total = quantity;
+    return total;
+  };
+
   return (
     <ReactQueryProvider>
-      <div id="app">
-        <Header />
-        <main>
-          <AppBreadCrumbs />
-          <Router>
-            <Home path="/" />
-            <ProductDetail path="/productDetail/:id" />
-          </Router>
-        </main>
-      </div>
+      <Header getTotalQuantity={getTotalQuantity} />
+      <main>
+        <AppBreadCrumbs />
+        <AppRouter />
+      </main>
     </ReactQueryProvider>
   );
 };

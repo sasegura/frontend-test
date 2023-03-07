@@ -5,10 +5,10 @@ import Grid from "@mui/material/Grid";
 import { useQuery } from "react-query";
 
 import SearchBar from "../../components/searchBar";
-import { Typography } from "@mui/material";
 import ProductCard from "../../components/productCard";
+import IsLoadding from "../../components/isLoadding";
+import IsError from "../../components/isError";
 import { getProduts } from "../../queryFunctions/getProducts";
-import IsLoadding from "../../components/isLoadding/isLoadding";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
@@ -46,11 +46,7 @@ const Home = () => {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <IsLoadding loadding={status === "loading"}>
-          {isError ? (
-            <Typography variant="h5" component="div">
-              {error.message}
-            </Typography>
-          ) : (
+          <IsError isError={isError} message={error?.message}>
             <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               {productList.map((product) => (
                 <Grid key={product.id} item xs={12} sm={6} md={3}>
@@ -60,7 +56,7 @@ const Home = () => {
                 </Grid>
               ))}
             </Grid>
-          )}
+          </IsError>
         </IsLoadding>
       </Box>
     </Box>
